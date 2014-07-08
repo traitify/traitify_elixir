@@ -1,0 +1,2 @@
+defmodule TraitifyElixir do
+end

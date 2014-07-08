@@ -1,0 +1,4 @@
+TraitifyElixir
+==============
+
+** TODO: Add description **
