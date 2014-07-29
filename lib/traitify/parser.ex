@@ -1,28 +1,25 @@
 defmodule Traitify.Parser do
-  defmacro __using__(opts) do
-    has_many = opts[:has_many] |> Atom.to_string
 
-    quote do
-      def parse_set([]), do: []
-      def parse_set([h|t]) do
-        [Map.keys(h) |> __MODULE__.merge_keys h] ++ __MODULE__.parse_set(t)
-      end
-
-      def merge_keys([], _, acc), do: acc
-      def merge_keys([key|t], set, acc) do
-        new_key = String.to_atom key
-        acc = Map.put acc, new_key, fetch_for(key, set)
-        merge_keys(t, set, acc)
-      end
-
-      def fetch_for(unquote(has_many), parent) do
-        Map.fetch!(parent, unquote(has_many)) |>
-          Traitify.Badge.parse_set
-      end
-
-      def fetch_for(key, set) do
-        Map.fetch!(set, key)
-      end
-    end
+  def parse([]), do: []
+  def parse([h|t]) do
+    [extract_keys(h) |> parse_keys(h) | parse(t)]
   end
+  def parse(val), do: val
+
+  defp merge(acc, [], _), do: acc
+  defp merge(acc, [key|t], set) do
+    key |> get(set) |> put(key, acc) |> merge(t, set)
+  end
+
+  defp get(key, set), do: fetch(key, set) |> parse
+  defp put(val, key, acc) when is_atom(key) do
+    Map.put acc, key, val
+  end
+  defp put(val, key, acc) do
+    put val, String.to_atom(key), acc
+  end
+
+  defp parse_keys(keys, set), do: merge(%{}, keys, set)
+  defp extract_keys(set), do: Map.keys set
+  defp fetch(key, set), do: Map.fetch!(set, key)
 end
