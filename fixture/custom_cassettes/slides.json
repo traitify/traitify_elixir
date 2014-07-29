@@ -1,0 +1,60 @@
+[
+  {
+  "request": {
+    "url": "http://example.com/v1/assessments/6b546d14-5c4c-42c6-b146-49ff40d87a7d/slides"
+  },
+  "response": {
+    "status_code": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+      "id": "8ea9fad0-f65a-491a-adc6-0ae893b07734",
+      "position": 1,
+      "caption": "Alphabetical Order",
+      "image_desktop": "https://traitify-api.s3.amazonaws.com/slides/8ea9fad0-f65a-491a-adc6-0ae893b07734/desktop",
+      "image_desktop_retina": "https://traitify-api.s3.amazonaws.com/slides/8ea9fad0-f65a-491a-adc6-0ae893b07734/desktop_retina",
+      "image_phone_landscape": "https://traitify-api.s3.amazonaws.com/slides/8ea9fad0-f65a-491a-adc6-0ae893b07734/phone_landscape",
+      "image_phone_portrait": "https://traitify-api.s3.amazonaws.com/slides/8ea9fad0-f65a-491a-adc6-0ae893b07734/phone_portrait",
+      "response": null,
+      "time_taken": null,
+      "completed_at": null,
+      "created_at": 1406646792810,
+      "focus_x": 50,
+      "focus_y": 50
+    },
+    {
+      "id": "338e97c3-2ab3-47db-870b-b6becc09bb8f",
+      "position": 2,
+      "caption": "Public Speaking",
+      "image_desktop": "https://traitify-api.s3.amazonaws.com/slides/338e97c3-2ab3-47db-870b-b6becc09bb8f/desktop",
+      "image_desktop_retina": "https://traitify-api.s3.amazonaws.com/slides/338e97c3-2ab3-47db-870b-b6becc09bb8f/desktop_retina",
+      "image_phone_landscape": "https://traitify-api.s3.amazonaws.com/slides/338e97c3-2ab3-47db-870b-b6becc09bb8f/phone_landscape",
+      "image_phone_portrait": "https://traitify-api.s3.amazonaws.com/slides/338e97c3-2ab3-47db-870b-b6becc09bb8f/phone_portrait",
+      "response": null,
+      "time_taken": null,
+      "completed_at": null,
+      "created_at": 1406646792810,
+      "focus_x": 50,
+      "focus_y": 50
+    },
+    {
+      "id": "0ee906a9-ccd9-48eb-8d07-28dd2ea199cb",
+      "position": 3,
+      "caption": "Team Player",
+      "image_desktop": "https://traitify-api.s3.amazonaws.com/slides/0ee906a9-ccd9-48eb-8d07-28dd2ea199cb/desktop",
+      "image_desktop_retina": "https://traitify-api.s3.amazonaws.com/slides/0ee906a9-ccd9-48eb-8d07-28dd2ea199cb/desktop_retina",
+      "image_phone_landscape": "https://traitify-api.s3.amazonaws.com/slides/0ee906a9-ccd9-48eb-8d07-28dd2ea199cb/phone_landscape",
+      "image_phone_portrait": "https://traitify-api.s3.amazonaws.com/slides/0ee906a9-ccd9-48eb-8d07-28dd2ea199cb/phone_portrait",
+      "response": null,
+      "time_taken": null,
+      "completed_at": null,
+      "created_at": 1406646792810,
+      "focus_x": 50,
+      "focus_y": 50
+    }
+    ]
+  }
+}
+]

@@ -1,19 +1,3 @@
-defmodule Traitify.Routes do
-  defmacro __using__(_opts) do
-    quote do
-      def route(:decks, _), do: "/decks"
-
-      def route(:personality_types, [deck: deck]) do
-        "/decks/#{deck}/personality_types"
-      end
-
-      def route(:assessments, [id: id]) do
-        "/assessments/#{id}"
-      end
-    end
-  end
-end
-
 defmodule Traitify.Client do
   use HTTPoison.Base
   use Traitify.Routes
