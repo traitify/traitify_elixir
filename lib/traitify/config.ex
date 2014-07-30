@@ -1,4 +1,4 @@
-defmodule Traitify.Config.Dev do
+defmodule Traitify.Config do
   use ExConf.Config
 
   @host System.get_env("TRAITIFY_HOST") || "http://example.com"

@@ -43,7 +43,7 @@ defmodule Traitify.Client do
   valid url.
   """
   def process_url(url) do
-    config = Traitify.Config.Dev
+    config = Traitify.Config
     config.api[:host] <> config.api[:version] <> url
   end
 
