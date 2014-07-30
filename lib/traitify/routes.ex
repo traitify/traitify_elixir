@@ -10,6 +10,7 @@ defmodule Traitify.Routes do
       def route(:assessments, [id: id]) do
         "/assessments/#{id}"
       end
+      def route(:assessments), do: "/assessments"
 
       def route(:slides, [assessment_id: id]) do
         "/assessments/#{id}/slides"

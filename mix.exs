@@ -20,7 +20,8 @@ defmodule TraitifyElixir.Mixfile do
     [
       {:ex_conf, "~> 0.1.2"},
       {:hackney, github: "benoitc/hackney"},
-      {:httpoison, "~> 0.3.0"}
+      {:httpoison, "~> 0.3.0"},
+      {:jazz, "~> 0.1.2"}
     ]
   end
 end

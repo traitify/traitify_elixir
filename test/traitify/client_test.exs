@@ -48,4 +48,12 @@ defmodule Traitify.Client.Test do
     end
   end
 
+  test "create a new assessment" do
+    use_cassette "new_assessment", custom: true do
+      assessment = Client.create(:assessments, %{deck_id: "career-deck"})
+
+      assert "6b546d14-5c4c-42c6-b146-49ff40d87a7d" == assessment.id
+    end
+  end
+
 end
