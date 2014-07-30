@@ -1,0 +1,77 @@
+[
+  {
+  "request": {
+    "url": "http://example.com/v1/assessments/6b546d14-5c4c-42c6-b146-49ff40d87a7d/slides"
+  },
+  "response": {
+    "status_code": 200,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body": [
+      {
+      "id": "8ea9fad0-f65a-491a-adc6-0ae893b07734",
+      "position": 1,
+      "caption": null,
+      "image_desktop": null,
+      "image_desktop_retina": null,
+      "image_phone_landscape": null,
+      "image_phone_portrait": null,
+      "response": true,
+      "time_taken": 2,
+      "completed_at": 1406685148843,
+      "created_at": 1406646792810,
+      "focus_x": null,
+      "focus_y": null
+    },
+    {
+      "id": "338e97c3-2ab3-47db-870b-b6becc09bb8f",
+      "position": 2,
+      "caption": null,
+      "image_desktop": null,
+      "image_desktop_retina": null,
+      "image_phone_landscape": null,
+      "image_phone_portrait": null,
+      "response": false,
+      "time_taken": 1,
+      "completed_at": null,
+      "completed_at": 1406685148843,
+      "created_at": 1406646792810,
+      "focus_x": null,
+      "focus_y": null
+    },
+    {
+      "id": "0ee906a9-ccd9-48eb-8d07-28dd2ea199cb",
+      "position": 3,
+      "caption": null,
+      "image_desktop": null,
+      "image_desktop_retina": null,
+      "image_phone_landscape": null,
+      "image_phone_portrait": null,
+      "response": false,
+      "time_taken": 1,
+      "completed_at": null,
+      "completed_at": 1406685148843,
+      "created_at": 1406646792810,
+      "focus_x": null,
+      "focus_y": null
+    },
+    {
+      "id": "846671a6-530d-4b8e-a012-fc45ec5a045e",
+      "position": 4,
+      "caption": null,
+      "image_desktop": null,
+      "image_desktop_retina": null,
+      "image_phone_landscape": null,
+      "image_phone_portrait": null,
+      "response": null,
+      "time_taken": null,
+      "completed_at": null,
+      "created_at": 1406646792810,
+      "focus_x": null,
+      "focus_y": null
+    }
+    ]
+  }
+}
+]

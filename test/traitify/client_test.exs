@@ -64,8 +64,29 @@ defmodule Traitify.Client.Test do
 
       assert "8ea9fad0-f65a-491a-adc6-0ae893b07734" == slide.id
       assert slide.response
-      # assert 2 == slide.time_taken
+      assert 2 == slide.time_taken
     end
   end
 
+  test "bulk update an assessment slide" do
+    use_cassette "bulk_update_slides", custom: true do
+      slides = [
+        %{id: "8ea9fad0-f65a-491a-adc6-0ae893b07734", response: true, time_taken: 2},
+        %{id: "338e97c3-2ab3-47db-870b-b6becc09bb8f", response: false, time_taken: 1},
+        %{id: "0ee906a9-ccd9-48eb-8d07-28dd2ea199cb", response: false, time_taken: 1},
+      ]
+      results = Client.update(:slides, slides, assessment_id: "6b546d14-5c4c-42c6-b146-49ff40d87a7d")
+
+      first_slide = results |> List.first
+      last_slide = results |> List.last
+
+      assert "8ea9fad0-f65a-491a-adc6-0ae893b07734" == first_slide.id
+      assert first_slide.response
+      assert 2 == first_slide.time_taken
+
+      assert "846671a6-530d-4b8e-a012-fc45ec5a045e" == last_slide.id
+      assert nil == last_slide.response
+      assert nil == last_slide.time_taken
+    end
+  end
 end
