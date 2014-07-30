@@ -13,6 +13,10 @@ defmodule Traitify.Client do
     route(entity) |> post(body) |> response_body |> decode
   end
 
+  def update(entity, body \\ %{}, args \\ []) when entity |> is_atom do
+    route(entity, args) |> put(body) |> response_body |> decode
+  end
+
   defp response_body(response), do: response.body
 
   @doc """

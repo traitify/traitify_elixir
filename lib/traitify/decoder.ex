@@ -7,8 +7,7 @@ defmodule Traitify.Decoder do
   def decode(val) when val |> is_map do
     extract_keys(val) |> parse_keys(val)
   end
-  def decode(val) when val |> is_binary, do: val
-  def decode(_), do: nil
+  def decode(val), do: val
 
   defp merge(acc, [], _), do: acc
   defp merge(acc, [key|t], set) do

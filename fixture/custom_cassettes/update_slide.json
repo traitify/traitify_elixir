@@ -1,0 +1,28 @@
+[
+  {
+  "request": {
+    "url": "http://example.com/v1/assessments/6b546d14-5c4c-42c6-b146-49ff40d87a7d/slides/8ea9fad0-f65a-491a-adc6-0ae893b07734"
+  },
+  "response": {
+    "status_code": 201,
+    "headers": {
+      "Content-Type": "application/json"
+    },
+    "body":{
+      "id": "8ea9fad0-f65a-491a-adc6-0ae893b07734",
+      "position": 1,
+      "caption": null,
+      "image_desktop": null,
+      "image_desktop_retina": null,
+      "image_phone_landscape": null,
+      "image_phone_portrait": null,
+      "response": true,
+      "time_taken": 2,
+      "completed_at": 1406682278234,
+      "created_at": 1406646792810,
+      "focus_x": null,
+      "focus_y": null
+    }
+  }
+  }
+]

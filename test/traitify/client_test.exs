@@ -56,4 +56,16 @@ defmodule Traitify.Client.Test do
     end
   end
 
+  test "update an assessment slide" do
+    use_cassette "update_slide", custom: true do
+      slide = Client.update(:slides, %{response: true, time_taken: 2},
+                                      assessment_id: "6b546d14-5c4c-42c6-b146-49ff40d87a7d",
+                                      slide_id: "8ea9fad0-f65a-491a-adc6-0ae893b07734")
+
+      assert "8ea9fad0-f65a-491a-adc6-0ae893b07734" == slide.id
+      assert slide.response
+      # assert 2 == slide.time_taken
+    end
+  end
+
 end
