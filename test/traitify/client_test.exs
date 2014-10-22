@@ -9,11 +9,14 @@ defmodule Traitify.Client.Test do
       decks = Client.all(:decks)
       assert 2 == decks |> Enum.count
 
-      assert "career-deck" == List.first(decks).id
-      assert "super-hero" == List.last(decks).id
+      first_deck = List.first(decks)
+      last_deck = List.last(decks)
 
-      badges = List.first(decks).badges
-      assert "Visionary" == List.first(badges).personality_type
+      assert "career-deck" == first_deck["id"]
+      assert "super-hero" == last_deck["id"]
+
+      badges = first_deck["badges"]
+      assert "Visionary" == List.first(badges)["personality_type"]
     end
   end
 
@@ -22,11 +25,14 @@ defmodule Traitify.Client.Test do
       personality_types = Client.all(:deck_personality_types, deck: "career-deck")
       assert 7 == personality_types |> Enum.count
 
-      assert "Action Taker" == List.first(personality_types).name
-      assert "Visionary" == List.last(personality_types).name
+      first_personality_type = List.first(personality_types)
+      last_personality_type = List.last(personality_types)
 
-      badge = List.first(personality_types).badge
-      assert "fff" == badge.font_color
+      assert "Action Taker" == first_personality_type["name"]
+      assert "Visionary" == last_personality_type["name"]
+
+      badge = List.first(personality_types)["badge"]
+      assert "fff" == badge["font_color"]
     end
   end
 
@@ -34,8 +40,8 @@ defmodule Traitify.Client.Test do
     use_cassette "assessments", custom: true do
       assessment = Client.all(:assessments, id: "6b546d14-5c4c-42c6-b146-49ff40d87a7d")
 
-      assert "6b546d14-5c4c-42c6-b146-49ff40d87a7d" == assessment.id
-      assert "career-deck" == assessment.deck_id
+      assert "6b546d14-5c4c-42c6-b146-49ff40d87a7d" == assessment["id"]
+      assert "career-deck" == assessment["deck_id"]
     end
   end
 
@@ -44,7 +50,8 @@ defmodule Traitify.Client.Test do
       slides = Client.all(:slides, assessment_id: "6b546d14-5c4c-42c6-b146-49ff40d87a7d")
       assert 3 == slides |> Enum.count
 
-      assert "Alphabetical Order" == List.first(slides).caption
+      first_slide = List.first(slides)
+      assert "Alphabetical Order" == first_slide["caption"]
     end
   end
 
@@ -52,7 +59,7 @@ defmodule Traitify.Client.Test do
     use_cassette "new_assessment", custom: true do
       assessment = Client.create(:assessments, %{deck_id: "career-deck"})
 
-      assert "6b546d14-5c4c-42c6-b146-49ff40d87a7d" == assessment.id
+      assert "6b546d14-5c4c-42c6-b146-49ff40d87a7d" == assessment["id"]
     end
   end
 
@@ -62,9 +69,9 @@ defmodule Traitify.Client.Test do
                                       assessment_id: "6b546d14-5c4c-42c6-b146-49ff40d87a7d",
                                       slide_id: "8ea9fad0-f65a-491a-adc6-0ae893b07734")
 
-      assert "8ea9fad0-f65a-491a-adc6-0ae893b07734" == slide.id
-      assert slide.response
-      assert 2 == slide.time_taken
+      assert "8ea9fad0-f65a-491a-adc6-0ae893b07734" == slide["id"]
+      assert slide["response"]
+      assert 2 == slide["time_taken"]
     end
   end
 
@@ -80,13 +87,13 @@ defmodule Traitify.Client.Test do
       first_slide = results |> List.first
       last_slide = results |> List.last
 
-      assert "8ea9fad0-f65a-491a-adc6-0ae893b07734" == first_slide.id
-      assert first_slide.response
-      assert 2 == first_slide.time_taken
+      assert "8ea9fad0-f65a-491a-adc6-0ae893b07734" == first_slide["id"]
+      assert first_slide["response"]
+      assert 2 == first_slide["time_taken"]
 
-      assert "846671a6-530d-4b8e-a012-fc45ec5a045e" == last_slide.id
-      assert nil == last_slide.response
-      assert nil == last_slide.time_taken
+      assert "846671a6-530d-4b8e-a012-fc45ec5a045e" == last_slide["id"]
+      assert nil == last_slide["response"]
+      assert nil == last_slide["time_taken"]
     end
   end
 end

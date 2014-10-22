@@ -1,8 +1,11 @@
 defmodule Traitify.Config do
   use ExConf.Config
 
-  @host System.get_env("TRAITIFY_HOST") || "http://example.com"
-  @secret System.get_env("TRAITIFY_SECRET") || "super_secret__"
+  config :api, host: host(Mix.env), secret: secret(Mix.env), version: "/v1"
 
-  config :api, host: @host, secret: @secret, version: "/v1"
+  def host(:test), do: "http://example.com"
+  def host(_), do: System.get_env("TRAITIFY_HOST")
+
+  def secret(:test), do: "your_public_api_key___"
+  def secret(_), do: System.get_env("TRAITIFY_SECRET")
 end

@@ -1,7 +1,6 @@
 defmodule Traitify.Client do
   use HTTPoison.Base
   use Traitify.Routes
-  use Jazz
 
   @doc """
 
@@ -11,7 +10,7 @@ defmodule Traitify.Client do
   """
   @spec all(Atom.t, Keyword.t) :: Keyword.t
   def all(entity, args \\ []) when entity |> is_atom do
-    route(entity, args) |> get |> response_body
+    route(entity, args) |> get_request |> response_body
   end
 
   @doc """
@@ -22,7 +21,7 @@ defmodule Traitify.Client do
   """
   @spec create(Atom.t, Map.t) :: Map.t
   def create(entity, body \\ %{}) when entity |> is_atom do
-    route(entity) |> post(body) |> response_body
+    route(entity) |> post_request(body) |> response_body
   end
 
   @doc """
@@ -34,10 +33,14 @@ defmodule Traitify.Client do
   @spec update(Atom.t, Map.t, Keyword.t) :: Map.t
   @spec update(Atom.t, Map.t, Keyword.t) :: Keyword.t
   def update(entity, body \\ %{}, args \\ []) when entity |> is_atom do
-    route(entity, args) |> put(body) |> response_body
+    route(entity, args) |> put_request(body) |> response_body
   end
 
   defp response_body(response), do: response.body
+
+  defp get_request(path), do: get(path, [], hackney_options)
+  defp post_request(path, body), do: post(path, body, [], hackney_options)
+  defp put_request(path, body), do: put(path, body, [], hackney_options)
 
   @doc """
   process_url/1 is an override from HTTPoison.Base and uses the traitify config to construct a
@@ -52,13 +55,18 @@ defmodule Traitify.Client do
   process_request_body/1 is an override from HTTPoison.Base and used to encode the struct to json
   """
   def process_request_body(body) do
-    body |> JSON.encode!
+    body
   end
 
   @doc """
   process_response_body/1 is an override from HTTPoison.Base and used to decode the response
   """
   def process_response_body(body) do
-    body |> JSON.encode! |> JSON.decode! keys: :atoms
+    body
+  end
+
+  defp hackney_options do
+    config = Traitify.Config
+    [hackney: [basic_auth: { config.api[:secret], "x" }]]
   end
 end

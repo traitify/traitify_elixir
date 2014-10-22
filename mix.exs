@@ -4,24 +4,21 @@ defmodule TraitifyElixir.Mixfile do
   def project do
     [app: :traitify_elixir,
      version: "0.0.1",
-     elixir: "~> 0.14.2",
-     deps: deps(Mix.env)]
+     elixir: "~> 1.0.0",
+     deps: deps]
   end
 
   def application do
-    [applications: []]
+    [applications: [:httpoison]]
   end
 
-  defp deps(:test) do
-    [ {:exvcr, github: "parroty/exvcr"}] ++ deps(:prod)
-  end
-
-  defp deps(_) do
+  defp deps do
     [
-      {:ex_conf, "~> 0.1.2"},
-      {:hackney, github: "benoitc/hackney"},
-      {:httpoison, "~> 0.3.0"},
-      {:jazz, "~> 0.1.2"}
+      {:exvcr, "~> 0.3.2"},
+      {:ex_conf, "~> 0.1.3"},
+      {:hackney, "~> 0.13.1"},
+      {:httpoison, "~> 0.4.2"},
+      {:poison, "~> 1.1.1"}
     ]
   end
 end
