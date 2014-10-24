@@ -55,7 +55,7 @@ defmodule Traitify.Client do
   process_request_body/1 is an override from HTTPoison.Base and used to encode the struct to json
   """
   def process_request_body(body) do
-    body
+    Poison.Encoder.encode(body, []) |> IO.iodata_to_binary
   end
 
   @doc """
