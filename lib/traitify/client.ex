@@ -59,6 +59,13 @@ defmodule Traitify.Client do
   end
 
   @doc """
+  process_request_headers/1 is an override from HTTPoison.Base and used to set the request content-type
+  """
+  def process_request_headers(headers) do
+    headers ++ [{"Content-Type", "application/json"}]
+  end
+
+  @doc """
   process_response_body/1 is an override from HTTPoison.Base and used to decode the response
   """
   def process_response_body(body) do
