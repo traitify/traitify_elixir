@@ -1,11 +1,23 @@
+Code.ensure_loaded?(Hex) and Hex.start
+
 defmodule TraitifyElixir.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :traitify_elixir,
-     version: "0.0.1",
-     elixir: "~> 1.0.0",
-     deps: deps]
+    [ app: :traitify_elixir,
+      version: "0.1.1",
+      elixir: "~> 1.0.0",
+      deps: deps,
+      package: [
+        files: ["lib", "mix.exs", "README*", "LICENSE*"],
+        contributors: ["Johnny Winn"],
+        licenses: ["Apache 2.0"],
+        links: %{ "Github" => "https://github.com/traitify/traitify_elixir" }
+      ],
+    description: """
+    An Elixir client library for the Traitify API
+    """
+  ]
   end
 
   def application do

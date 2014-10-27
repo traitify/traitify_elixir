@@ -68,9 +68,10 @@ defmodule Traitify.Client do
   @doc """
   process_response_body/1 is an override from HTTPoison.Base and used to decode the response
   """
-  def process_response_body(body) do
-    body
+  def process_response_body(body) when body |> is_binary do
+    body |> Poison.decode!
   end
+  def process_response_body(body), do: body
 
   defp hackney_options do
     config = Traitify.Config
