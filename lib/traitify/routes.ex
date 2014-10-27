@@ -19,6 +19,14 @@ defmodule Traitify.Routes do
       def route(:slides, [assessment_id: id, slide_id: slide_id]) do
         "/assessments/#{id}/slides/#{slide_id}"
       end
+
+      def route(:personality_types, [assessment_id: id]) do
+        "/assessments/#{id}/personality_types"
+      end
+
+      def route(:personality_traits, [assessment_id: id]) do
+        "/assessments/#{id}/personality_traits/raw"
+      end
     end
   end
 end
